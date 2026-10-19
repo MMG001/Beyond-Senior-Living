@@ -343,3 +343,29 @@ address { font-style: normal; }
 @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
 @media print { .topbar, .site-header, .callbar, .cta-band, .site-footer { display: none; } }
 .gallery-cover { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; }
+
+/* ---------- Service cards (home) ---------- */
+.svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.svc-card { position: relative; display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(22,38,63,.06); transition: box-shadow .2s, transform .2s; }
+.svc-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.svc-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.svc-card__body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
+.svc-card h3 { font-size: 1.45rem; margin-bottom: .45em; }
+.svc-card h3 a { color: var(--ink); text-decoration: none; }
+.svc-card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }   /* whole card is clickable */
+.svc-card:hover h3 a { color: var(--blue); }
+.svc-card p { color: var(--muted); flex: 1; margin-bottom: 1.2rem; }
+.svc-card__more { font-weight: 700; color: var(--blue); }
+.svc-card:hover .svc-card__more { text-decoration: underline; text-underline-offset: .18em; }
+.svc-card h3 a:focus-visible { outline: none; }
+.svc-card:has(h3 a:focus-visible) { outline: 3px solid var(--sky); outline-offset: 3px; }
+.svc-card--feature { background: var(--ink); color: #d5e0ec; }
+.svc-card--feature:hover { transform: none; box-shadow: 0 1px 2px rgba(22,38,63,.06); }
+.svc-card--feature .svc-card__body { justify-content: center; padding: 34px 32px; }
+.svc-card--feature h3 { color: #fff; font-size: 1.7rem; }
+.svc-card--feature p { color: #c9d5e3; flex: 0 0 auto; margin-bottom: 1.6rem; }
+.svc-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.svc-card__link { color: #fff; font-weight: 700; }
+.svc-card__link:hover { color: #fff; }
+@media (max-width: 980px) { .svc-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .svc-cards { grid-template-columns: 1fr; } }
