@@ -311,10 +311,9 @@ address { font-style: normal; }
 .form-fallback { background: var(--mist); border-radius: var(--radius); padding: 24px; }
 .form-fallback__title { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--ink); margin-bottom: .4em; }
 .form-fallback__actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0 0; }
-.cognito-wrap { min-height: 420px; }
+.cognito-wrap { min-height: 360px; }
 /* Light touch on Cognito's seamless form so it matches the site */
 .cognito-wrap .cog-cognito { --cog-font-family: var(--sans); font-family: var(--sans); }
-.cognito-wrap .cog-button--primary { background: var(--blue) !important; border-radius: 999px !important; }
 
 .map-facade { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--sky-soft); aspect-ratio: 4 / 3; display: grid; place-items: center; text-align: center; padding: 24px; border: 1px solid var(--line); }
 .map-facade p { color: var(--ink); font-weight: 600; margin-bottom: .8rem; }

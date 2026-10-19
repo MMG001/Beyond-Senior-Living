@@ -28,6 +28,7 @@ npx serve dist        # or: python3 -m http.server -d dist 8080
 | Path | What it is |
 |---|---|
 | `site.config.json` | Business name, phone, fax, email, address, service area and **Cognito form IDs**. Change them here once and every page updates. |
+| `src/pages/schedule-a-tour.html` | Appointment form page (every "Schedule a tour" button links here) |
 | `src/partials/header.html` | Top bar, logo and main navigation (shared by every page) |
 | `src/partials/footer.html` | Footer and the mobile "Call / Schedule a tour" bar |
 | `src/partials/cta.html` | The navy "Come see the home" band used at the bottom of pages |
@@ -48,12 +49,17 @@ npx serve dist        # or: python3 -m http.server -d dist 8080
 - `<x-partial name="cta" />`: includes a partial.
 - `{{phone}}`, `{{phoneHref}}`, `{{fax}}`, `{{email}}`, `{{street}}`, `{{year}}` and the other keys from `site.config.json`.
 
-## Connect the Cognito forms
+## Cognito forms (connected)
 
-1. In Cognito Forms, open the form, then **Publish > Embed > Seamless**.
-2. The code looks like `<script src="https://www.cognitoforms.com/f/seamless.js" data-key="ABC123…" data-form="5"></script>`.
-3. Copy `data-key` into `cognito.accountKey` and `data-form` into `cognito.forms.contact` (Contact page) or `cognito.forms.employment` (Employment page) in `site.config.json`.
-4. Commit. Until a form ID is filled in, that page shows a "Call / Email us" box instead, so there's never a broken form.
+The forms use Cognito's **Seamless** embed (no iframe), so they inherit the site fonts and resize naturally.
+
+| Page | Form | `site.config.json` key | ID |
+|---|---|---|---|
+| /schedule-a-tour/ | Appointment | `cognito.forms.appointment` | 50 |
+| /contact/ | Contact | `cognito.forms.contact` | 51 |
+| /employment/ | Employment application | `cognito.forms.employment` | 56 |
+
+The account key is `cognito.accountKey`. To swap a form, change its number and push. If a form number is left blank, that page shows a "Call / Email us" box instead.
 
 ## SEO built in
 
