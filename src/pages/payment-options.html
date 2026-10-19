@@ -1,0 +1,57 @@
+<!--
+{
+  "title": "Accepted Forms of Payment | Beyond Senior Living",
+  "description": "Beyond Senior Living accepts private pay, long-term care insurance and Minnesota Medicaid waivers (Brain Injury, CADI and Elderly Waiver) for assisted living.",
+  "path": "/payment-options/",
+  "priority": 0.8,
+  "breadcrumbs": [["About", "/about/"], ["Accepted forms of payment", "/payment-options/"]],
+  "faq": [
+    ["Do you accept Medicaid for assisted living?", "Yes. We accept Minnesota Medicaid waiver programs: the Brain Injury (BI) waiver, the CADI waiver and the Elderly Waiver (EW)."],
+    ["Do you accept long-term care insurance?", "Yes. We accept long-term care insurance. Call us with your policy details and we will talk through it with you."],
+    ["Can we start with private pay and switch to a waiver later?", "Every situation is different. Please call us at 651-200-0857 so we can talk through your loved one's circumstances."]
+  ]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <h1>Accepted forms of payment</h1>
+    <p class="lede">Paying for assisted living can feel complicated. We accept several forms of payment and are happy to talk through your options with you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="panels">
+      <div class="panel panel--accent">
+        <h2 style="font-size:1.4rem">Private pay</h2>
+        <p>Pay for your loved one’s care directly. We’ll walk you through what their individualized care plan includes.</p>
+      </div>
+      <div class="panel panel--accent">
+        <h2 style="font-size:1.4rem">Long-term care insurance</h2>
+        <p>We accept long-term care insurance. Call us with your policy details and we’ll go over it together.</p>
+      </div>
+      <div class="panel panel--accent">
+        <h2 style="font-size:1.4rem">Medicaid waivers</h2>
+        <p>We accept these Minnesota Medicaid waiver programs:</p>
+        <ul class="checks mb-0">
+          <li>Brain Injury (BI) waiver</li>
+          <li>Community Access for Disability Inclusion (CADI) waiver</li>
+          <li>Elderly Waiver (EW)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:1.5rem">Waiver eligibility is determined by your county or tribal nation. If you’re not sure which program fits, give us a call and we’ll help you figure out where to start.</p>
+  </div>
+</section>
+
+<section class="section section--mist" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section__head center"><h2 id="faq-title">Payment questions</h2></div>
+    <div class="faq">
+{{faq}}
+    </div>
+  </div>
+</section>
+
+<x-partial name="cta" />

@@ -1,0 +1,54 @@
+<!--
+{
+  "title": "Photo Gallery | Beyond Senior Living Assisted Living",
+  "description": "See inside Beyond Senior Living in Woodbury, MN: our common areas, private rooms, back deck and everyday moments with residents and staff.",
+  "path": "/gallery/",
+  "priority": 0.7,
+  "breadcrumbs": [["Gallery", "/gallery/"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <h1>Photo gallery</h1>
+    <p class="lede">These are real photos of our home, our rooms and the people who make it feel like family.</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap panels panels--2">
+    <a class="panel" href="/gallery/our-facility/" style="text-decoration:none;color:inherit">
+      <x-img name="kitchen-dining" alt="Open kitchen and dining area" sizes="(min-width: 900px) 560px, 92vw" class="gallery-cover" />
+      <h2 style="font-size:1.5rem;margin-top:1rem">Our facility</h2>
+      <p class="mb-0">The kitchen, dining and living rooms, plus the back deck. <span class="text-link" style="color:var(--blue)">View photos</span></p>
+    </a>
+    <a class="panel" href="/gallery/our-rooms/" style="text-decoration:none;color:inherit">
+      <x-img name="bedroom-2" alt="Furnished private bedroom with recliner" sizes="(min-width: 900px) 560px, 92vw" class="gallery-cover" />
+      <h2 style="font-size:1.5rem;margin-top:1rem">Our rooms</h2>
+      <p class="mb-0">Comfortable, furnished bedrooms with room for personal touches. <span class="text-link" style="color:var(--blue)">View photos</span></p>
+    </a>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="life-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="life-title">Life at Beyond</h2><p>Birthdays, baking, crafts and good company.</p></div>
+    <ul class="gallery">
+      <x-gallery-item name="residents-celebrating" alt="Two residents smiling together at a celebration" />
+      <x-gallery-item name="birthday-cake" alt="Resident in a sparkly birthday hat with his cake" />
+      <x-gallery-item name="birthday-party" alt="Birthday party at the dining table" />
+      <x-gallery-item name="resident-baking" alt="Resident baking in the kitchen" />
+      <x-gallery-item name="cooking-together" alt="Resident and a young helper preparing food" />
+      <x-gallery-item name="caregiver-resident-hug" alt="Caregiver with her arm around a resident" />
+      <x-gallery-item name="caregiver-crafts" alt="Caregiver and resident working on a craft" />
+      <x-gallery-item name="crossword-visit" alt="Resident doing a crossword with a visitor" />
+      <x-gallery-item name="snack-time" alt="Residents enjoying a snack together" />
+      <x-gallery-item name="resident-snowman" alt="Resident smiling with a snowman decoration" />
+      <x-gallery-item name="resident-craft-bird" alt="Resident proudly holding a craft project" />
+      <x-gallery-item name="caregiver-selfie" alt="Caregiver and resident taking a selfie" />
+    </ul>
+  </div>
+</section>
+<dialog class="lightbox" aria-label="Photo viewer"><button class="lightbox__close" type="button">Close</button><img src="" alt=""><p></p></dialog>
+
+<x-partial name="cta" />

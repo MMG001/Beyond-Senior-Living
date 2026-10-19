@@ -1,0 +1,36 @@
+<!--
+{
+  "title": "Our Rooms | Beyond Senior Living Assisted Living",
+  "description": "See the furnished bedrooms at Beyond Senior Living, an assisted living home in Woodbury, MN. Comfortable rooms with space to make them your own.",
+  "path": "/gallery/our-rooms/",
+  "priority": 0.7,
+  "breadcrumbs": [["Gallery", "/gallery/"], ["Our rooms", "/gallery/our-rooms/"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <h1>Our rooms</h1>
+    <p class="lede">Each bedroom is bright, comfortable and furnished, with space for the photos and keepsakes that make it feel like home. Call us to ask about current availability.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <ul class="gallery">
+      <x-gallery-item name="bedroom-1" alt="Bedroom with recliner and window" caption="Bedroom" />
+      <x-gallery-item name="bedroom-2" alt="Bedroom with recliner and quilt" caption="Bedroom" />
+      <x-gallery-item name="bedroom-3" alt="Bedroom with dresser" caption="Bedroom" />
+      <x-gallery-item name="bedroom-4" alt="Bedroom with patterned quilt" caption="Bedroom" />
+      <x-gallery-item name="bedroom-5" alt="Bedroom with purple bedding and recliner" caption="Bedroom" />
+      <x-gallery-item name="bedroom-6" alt="Bright bedroom with large window" caption="Bedroom" />
+    </ul>
+    <div class="actions">
+      <a class="btn" href="/contact/">Ask about availability</a>
+      <a class="btn btn-ghost" href="{{phoneHref}}">Call {{phone}}</a>
+    </div>
+  </div>
+</section>
+<dialog class="lightbox" aria-label="Photo viewer"><button class="lightbox__close" type="button">Close</button><img src="" alt=""><p></p></dialog>
+
+<x-partial name="cta" />

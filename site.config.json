@@ -1,0 +1,24 @@
+{
+  "name": "Beyond Senior Living",
+  "url": "https://beyondseniorlivingmn.com",
+  "tagline": "Assisted living in Woodbury, MN",
+  "phone": "651-200-0857",
+  "phoneHref": "tel:+16512000857",
+  "fax": "651-500-6891",
+  "email": "beyondseniorliving@gmail.com",
+  "street": "6281 Oakwood Road",
+  "city": "Woodbury",
+  "region": "MN",
+  "zip": "55128",
+  "serviceArea": "Proudly serving the Twin Cities",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=6281+Oakwood+Road+Woodbury+MN+55128",
+  "areaServed": ["Woodbury", "Saint Paul", "Minneapolis", "Cottage Grove", "Oakdale", "Maplewood", "Lake Elmo", "Afton", "Newport", "Stillwater", "Twin Cities metro"],
+  "cognito": {
+    "_readme": "Paste the account key and form IDs from Cognito Forms > Publish > Seamless. Leave blank to show a call/email fallback instead of the form.",
+    "accountKey": "",
+    "forms": {
+      "contact": "",
+      "employment": ""
+    }
+  }
+}

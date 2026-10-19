@@ -1,0 +1,51 @@
+<!--
+{
+  "title": "Contact Us & Schedule a Tour | Beyond Senior Living",
+  "description": "Schedule a tour of Beyond Senior Living, 6281 Oakwood Road, Woodbury, MN 55128. Call 651-200-0857 or send us a message about assisted living.",
+  "path": "/contact/",
+  "priority": 0.9,
+  "breadcrumbs": [["Contact us", "/contact/"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <h1>Contact us</h1>
+    <p class="lede">Schedule a tour, ask about availability or get answers about assisted living for your loved one. Send us a message or call, and we’ll get back to you soon.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="form-card">
+      <h2>Send us a message</h2>
+      <x-cognito form="contact" title="Prefer to talk it through?" text="Call or email us to schedule a tour or ask a question. We’re happy to help." />
+    </div>
+    <div>
+      <ul class="info-list">
+        <li><strong>Phone</strong><a href="{{phoneHref}}">{{phone}}</a></li>
+        <li><strong>Fax</strong><span>{{fax}}</span></li>
+        <li><strong>Email</strong><a href="mailto:{{email}}">{{email}}</a></li>
+        <li><strong>Address</strong><address>{{street}}<br>{{city}}, {{region}} {{zip}}</address></li>
+      </ul>
+      <div class="map-facade" data-map-src="https://www.google.com/maps?q=6281+Oakwood+Road,+Woodbury,+MN+55128&amp;output=embed" data-map-title="Map to Beyond Senior Living, 6281 Oakwood Road, Woodbury, MN">
+        <div>
+          <p>6281 Oakwood Road, Woodbury</p>
+          <button class="btn btn-ghost" type="button">Show map</button>
+          <p class="note" style="margin-top:.8rem"><a href="{{mapsUrl}}" target="_blank" rel="noopener">Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" aria-labelledby="tour-title">
+  <div class="wrap">
+    <div class="section__head"><h2 id="tour-title">What to expect on a tour</h2></div>
+    <div class="panels">
+      <div class="panel"><h3>Meet our team</h3><p>Talk with the staff who would care for your loved one day to day.</p></div>
+      <div class="panel"><h3>See the home</h3><p>Walk through the common areas, the rooms and the back deck.</p></div>
+      <div class="panel"><h3>Ask your questions</h3><p>Care needs, payment options, availability. Bring your list and we’ll go through it together.</p></div>
+    </div>
+  </div>
+</section>

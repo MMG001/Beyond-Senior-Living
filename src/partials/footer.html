@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="brand brand--light" href="/" aria-label="Beyond Senior Living, home page">
+        <img src="/assets/img/logo-icon.webp" width="48" height="48" alt="" loading="lazy">
+        <span class="brand__text"><span class="brand__name">Beyond</span><span class="brand__sub">Senior Living</span></span>
+      </a>
+      <p>A small assisted living home in Woodbury, Minnesota, where an experienced owner, an RN and a caring staff look after every resident like family.</p>
+      <p class="site-footer__area">{{serviceArea}}</p>
+    </div>
+    <div>
+      <h2 class="site-footer__h">Visit</h2>
+      <address>{{street}}<br>{{city}}, {{region}} {{zip}}</address>
+      <p><a href="{{mapsUrl}}" rel="noopener" target="_blank">Get directions<span class="sr-only"> (opens Google Maps)</span></a></p>
+    </div>
+    <div>
+      <h2 class="site-footer__h">Contact</h2>
+      <ul class="site-footer__list">
+        <li>Phone <a href="{{phoneHref}}">{{phone}}</a></li>
+        <li>Fax {{fax}}</li>
+        <li><a href="mailto:{{email}}">{{email}}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="site-footer__h">Explore</h2>
+      <ul class="site-footer__list">
+        <li><a href="/services/">Assisted living services</a></li>
+        <li><a href="/payment-options/">Accepted forms of payment</a></li>
+        <li><a href="/gallery/">Photo gallery</a></li>
+        <li><a href="/employment/">Employment</a></li>
+        <li><a href="/contact/">Schedule a tour</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap site-footer__bottom">
+    <p>&copy; {{year}} Beyond Senior Living. All rights reserved.</p>
+    <p><a href="/privacy-policy/">Privacy policy</a></p>
+  </div>
+</footer>
+<div class="callbar" aria-label="Quick contact">
+  <a class="callbar__call" href="{{phoneHref}}">Call {{phone}}</a>
+  <a class="callbar__tour" href="/contact/">Schedule a tour</a>
+</div>

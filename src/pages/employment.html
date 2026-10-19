@@ -1,0 +1,45 @@
+<!--
+{
+  "title": "Caregiver Jobs in Woodbury, MN | Beyond Senior Living",
+  "description": "Join the caregiving team at Beyond Senior Living, a small assisted living home in Woodbury, MN. Apply online for caregiver and nursing positions.",
+  "path": "/employment/",
+  "priority": 0.6,
+  "breadcrumbs": [["Employment", "/employment/"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
+        <h1>Employment</h1>
+        <p class="lede">Do you love caring for older adults? Join a small team where you get to know every resident by name and your work makes a real difference every shift.</p>
+      </div>
+      <div class="page-hero__media">
+        <x-img name="caregiver-selfie" alt="A Beyond Senior Living caregiver and resident smiling together" sizes="(min-width: 860px) 420px, 92vw" eager />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div class="form-card">
+      <h2>Job application</h2>
+      <p>Please fill out the application below. We’ll contact you if your experience matches an open position.</p>
+      <x-cognito form="employment" title="Online applications are coming soon" text="To apply now, email your resume to us or call to ask about open positions." />
+    </div>
+    <div class="prose">
+      <h2 style="font-size:1.5rem">Why work with us</h2>
+      <ul class="checks">
+        <li>A small assisted living home, not a large facility</li>
+        <li>Meaningful one-on-one time with residents</li>
+        <li>A supportive team led by an experienced owner and RN</li>
+        <li>Located in Woodbury, convenient to the east metro</li>
+      </ul>
+      <h2 style="font-size:1.5rem">Before you apply</h2>
+      <p>All staff complete a thorough background check, including criminal history, before they are hired.</p>
+      <p class="note">Questions about a position? Call <a href="{{phoneHref}}">{{phone}}</a> or email <a href="mailto:{{email}}">{{email}}</a>.</p>
+    </div>
+  </div>
+</section>

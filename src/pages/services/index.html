@@ -1,0 +1,52 @@
+<!--
+{
+  "title": "Assisted Living Services in Woodbury, MN | Beyond Senior Living",
+  "description": "Person-centered care, health care, homemaker companion, personal care assistant and RN services at our small assisted living home in Woodbury, MN.",
+  "path": "/services/",
+  "priority": 0.9,
+  "breadcrumbs": [["Services", "/services/"]]
+}
+-->
+<section class="page-hero">
+  <div class="wrap">
+    {{breadcrumbs}}
+    <div class="page-hero__grid">
+      <div>
+        <h1>Assisted living services</h1>
+        <p class="lede">We offer 24/7 support, and every resident’s individualized care plan is built around their specific needs. Here is how our team helps, from everyday routines to skilled nursing.</p>
+      </div>
+      <div class="page-hero__media">
+        <x-img name="svc-rn" alt="Caregiver sharing a warm moment with an older woman" sizes="(min-width: 860px) 420px, 92vw" eager />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="list-title">
+  <div class="wrap">
+    <h2 id="list-title" class="sr-only">Our services</h2>
+    <x-partial name="svc-list" />
+  </div>
+</section>
+
+<section class="section section--mist" aria-labelledby="incl-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="incl-title">Included in our assisted living care</h2>
+      <p class="lede">Every resident benefits from the same foundation of high quality care.</p>
+      <p><a class="text-link" href="/services/person-centered-care/">Read about our person-centered approach</a></p>
+    </div>
+    <ul class="checks">
+      <li>Awake staff on site 24/7 with excellent staffing ratios</li>
+      <li>RN site visits, as well as on call 24/7</li>
+      <li>24 hour assistance with activities of daily living (ADLs)</li>
+      <li>Medication setup, management, storage and administration</li>
+      <li>Three home-cooked meals daily, plus resident-specific snacks</li>
+      <li>Weekly wellness email updates for families</li>
+      <li>Socialization groups, exercise and outings</li>
+      <li>Respite care (call for availability)</li>
+    </ul>
+  </div>
+</section>
+
+<x-partial name="cta" />
