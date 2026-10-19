@@ -312,6 +312,7 @@ address { font-style: normal; }
 .form-fallback__title { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--ink); margin-bottom: .4em; }
 .form-fallback__actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0 0; }
 .cognito-wrap { min-height: 360px; }
+.cognito-wrap iframe { display: block; }
 /* Light touch on Cognito's seamless form so it matches the site */
 .cognito-wrap .cog-cognito { --cog-font-family: var(--sans); font-family: var(--sans); }
 

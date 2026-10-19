@@ -26,12 +26,24 @@
     "Twin Cities metro"
   ],
   "cognito": {
-    "_readme": "From Cognito Forms > Publish > Seamless: data-key = accountKey, data-form = form number. Leave a form blank to show a call/email fallback.",
+    "_readme": "Cognito iframe embed. Form URL = https://www.cognitoforms.com/f/{accountKey}/{id}. Height is the starting height from Cognito's embed code; iframe.js resizes it automatically.",
     "accountKey": "e5A6hQ7FG0We3U_f7oZrng",
     "forms": {
-      "appointment": "50",
-      "contact": "51",
-      "employment": "56"
+      "appointment": {
+        "id": "50",
+        "height": "873",
+        "title": "Appointment request form"
+      },
+      "contact": {
+        "id": "51",
+        "height": "516",
+        "title": "Contact form"
+      },
+      "employment": {
+        "id": "56",
+        "height": "3128",
+        "title": "Employment application form"
+      }
     }
   }
 }

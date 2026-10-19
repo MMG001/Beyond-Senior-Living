@@ -51,15 +51,15 @@ npx serve dist        # or: python3 -m http.server -d dist 8080
 
 ## Cognito forms (connected)
 
-The forms use Cognito's **Seamless** embed (no iframe), so they inherit the site fonts and resize naturally.
+The forms use Cognito's **iframe embed**, exactly as Cognito provides it. `iframe.js` resizes each frame to fit its form.
 
-| Page | Form | `site.config.json` key | ID |
-|---|---|---|---|
-| /schedule-a-tour/ | Appointment | `cognito.forms.appointment` | 50 |
-| /contact/ | Contact | `cognito.forms.contact` | 51 |
-| /employment/ | Employment application | `cognito.forms.employment` | 56 |
+| Page | Form | `site.config.json` key | ID | Start height |
+|---|---|---|---|---|
+| /schedule-a-tour/ (menu: Appointment) | Appointment | `cognito.forms.appointment` | 50 | 873 |
+| /contact/ | Contact | `cognito.forms.contact` | 51 | 516 |
+| /employment/ | Employment application | `cognito.forms.employment` | 56 | 3128 |
 
-The account key is `cognito.accountKey`. To swap a form, change its number and push. If a form number is left blank, that page shows a "Call / Email us" box instead.
+The account key is `cognito.accountKey`. To swap a form, change its `id` (and `height`) and push.
 
 ## SEO built in
 

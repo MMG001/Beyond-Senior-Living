@@ -53,9 +53,10 @@ function img(a) {
   return `<img src="/assets/img/${a.name}-${fallback}.webp" srcset="${srcset}" sizes="${a.sizes || '(min-width: 1200px) 600px, 100vw'}" width="${largest}" height="${h}" alt="${esc(a.alt)}"${a.class ? ` class="${a.class}"` : ''}${a.eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
 }
 function cognito(a) {
-  const key = site.cognito.accountKey, id = site.cognito.forms[a.form];
-  if (key && id) {
-    return `<div class="cognito-wrap"><script src="https://www.cognitoforms.com/f/seamless.js" data-key="${esc(key)}" data-form="${esc(id)}"></script></div><p class="note form-help">Trouble with the form? Call <a href="${site.phoneHref}">${site.phone}</a> or email <a href="mailto:${site.email}">${site.email}</a>.</p>`;
+  const key = site.cognito.accountKey, f = site.cognito.forms[a.form];
+  if (key && f && f.id) {
+    // Cognito iframe embed, exactly as provided by Cognito Forms (iframe.js auto-resizes the frame)
+    return `<div class="cognito-wrap"><iframe src="https://www.cognitoforms.com/f/${esc(key)}/${esc(f.id)}" allow="payment" style="border:0;width:100%;" height="${esc(f.height || '600')}" title="${esc(f.title || 'Form')}"></iframe>\n<script src="https://www.cognitoforms.com/f/iframe.js"></script></div><p class="note form-help">Trouble with the form? Call <a href="${site.phoneHref}">${site.phone}</a> or email <a href="mailto:${site.email}">${site.email}</a>.</p>`;
   }
   warnings.push(`Cognito form "${a.form}" not configured — fallback shown`);
   return `<div class="form-fallback" role="note"><p class="form-fallback__title">${esc(a.title || 'Our online form is on its way')}</p><p>${esc(a.text || 'In the meantime, call or email us and we’ll get right back to you.')}</p><p class="form-fallback__actions"><a class="btn" href="${site.phoneHref}">Call ${site.phone}</a> <a class="btn btn-ghost" href="mailto:${site.email}">Email us</a></p></div>`;
