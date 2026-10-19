@@ -379,3 +379,8 @@ address { font-style: normal; }
 .hero--full .lede { color: #eef3f8; max-width: 46ch; }
 .hero--full .hero__note { color: #d5dee8; }
 @media (max-width: 620px) { .hero--full { min-height: 0; } .hero--full .hero__bg { object-position: 62% 30%; } }
+
+.sub--right { left: auto; right: 0; }
+.legal-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; }
+.legal-links li + li::before { content: "|"; margin: 0 12px; color: rgba(255,255,255,.35); }
+@media (max-width: 1080px) { .sub--right { right: auto; } }

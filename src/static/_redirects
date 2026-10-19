@@ -19,12 +19,8 @@
 /services-style-1/rn-services-2/  /services/rn-services/  301
 /services-style-1/rn-services  /services/rn-services/  301
 /services-style-1/rn-services/  /services/rn-services/  301
-/services-style-1/insurance  /payment-options/  301
-/services-style-1/insurance/  /payment-options/  301
-/insurance  /payment-options/  301
-/insurance/  /payment-options/  301
-/resources  /services/  301
-/resources/  /services/  301
+/services-style-1/insurance  /insurance/  301
+/services-style-1/insurance/  /insurance/  301
 /privacy-policy-2  /privacy-policy/  301
 /privacy-policy-2/  /privacy-policy/  301
 /contact-form  /contact/  301
@@ -42,3 +38,6 @@
 /page-sitemap.xml  /sitemap.xml  301
 /feed/  /  301
 /feed  /  301
+/payment-options  /insurance/  301
+/payment-options/  /insurance/  301
+/terms  /terms-and-conditions/  301

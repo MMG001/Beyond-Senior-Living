@@ -20,14 +20,7 @@
     <nav id="site-nav" class="site-nav" aria-label="Main">
       <ul class="menu">
         <li><a href="/" data-nav>Home</a></li>
-        <li class="has-sub">
-          <a href="/about/" data-nav>About</a>
-          <button class="sub-toggle" type="button" aria-expanded="false" aria-label="About submenu"></button>
-          <ul class="sub">
-            <li><a href="/about/" data-nav>About us</a></li>
-            <li><a href="/payment-options/" data-nav>Accepted forms of payment</a></li>
-          </ul>
-        </li>
+        <li><a href="/about/" data-nav>About</a></li>
         <li class="has-sub">
           <a href="/services/" data-nav>Services</a>
           <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Services submenu"></button>
@@ -40,7 +33,6 @@
             <li><a href="/services/rn-services/" data-nav>RN services</a></li>
           </ul>
         </li>
-        <li><a href="/contact/" data-nav>Contact us</a></li>
         <li class="has-sub">
           <a href="/gallery/" data-nav>Gallery</a>
           <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Gallery submenu"></button>
@@ -49,7 +41,15 @@
             <li><a href="/gallery/our-rooms/" data-nav>Our rooms</a></li>
           </ul>
         </li>
-        <li><a href="/employment/" data-nav>Employment</a></li>
+        <li class="has-sub">
+          <a href="/contact/" data-nav>Contact us</a>
+          <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Contact submenu"></button>
+          <ul class="sub sub--right">
+            <li><a href="/insurance/" data-nav>Insurance</a></li>
+            <li><a href="/employment/" data-nav>Employment</a></li>
+            <li><a href="/resources/" data-nav>Resources</a></li>
+          </ul>
+        </li>
       </ul>
       <a class="btn site-nav__cta" href="/schedule-a-tour/">Schedule a tour</a>
     </nav>
