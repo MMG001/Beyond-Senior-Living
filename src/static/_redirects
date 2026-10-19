@@ -19,10 +19,10 @@
 /services/homemaker-companion/  /services/  301
 /services/personal-care-assistant  /services/  301
 /services/personal-care-assistant/  /services/  301
-/services-style-1/rn-services-2  /services/rn-services/  301
-/services-style-1/rn-services-2/  /services/rn-services/  301
-/services-style-1/rn-services  /services/rn-services/  301
-/services-style-1/rn-services/  /services/rn-services/  301
+/services-style-1/rn-services-2  /services/medical-services/  301
+/services-style-1/rn-services-2/  /services/medical-services/  301
+/services-style-1/rn-services  /services/medical-services/  301
+/services-style-1/rn-services/  /services/medical-services/  301
 /services-style-1/insurance  /insurance/  301
 /services-style-1/insurance/  /insurance/  301
 /privacy-policy-2  /privacy-policy/  301
@@ -47,3 +47,5 @@
 /terms  /terms-and-conditions/  301
 /appointment  /schedule-a-tour/  301
 /appointment/  /schedule-a-tour/  301
+/services/rn-services  /services/medical-services/  301
+/services/rn-services/  /services/medical-services/  301
