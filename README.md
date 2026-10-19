@@ -32,7 +32,7 @@ npx serve dist        # or: python3 -m http.server -d dist 8080
 | `src/partials/header.html` | Top bar, logo and main navigation (shared by every page) |
 | `src/partials/footer.html` | Footer and the mobile "Call / Schedule a tour" bar |
 | `src/partials/cta.html` | The navy "Come see the home" band used at the bottom of pages |
-| `src/partials/svc-list.html` | The list of 5 services (home + services pages) |
+| `src/partials/svc-list.html` | The list of 3 services (home + services pages) |
 | `src/partials/service-aside.html` | The sidebar on each service page |
 | `src/partials/layout.html` | `<head>` template: meta, Open Graph, fonts, schema |
 | `src/pages/**.html` | One file per page. The JSON block at the top sets the title, description, URL, breadcrumbs, FAQ and schema. |
