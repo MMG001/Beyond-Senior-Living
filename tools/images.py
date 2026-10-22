@@ -20,7 +20,7 @@ MAP = {
   'svc-personal-support': 'Personal-Support.jpg', 'svc-health-care': 'Health-Care-01.jpg', 'svc-health-care-2': 'Health-Care-3.jpg',
   'svc-homemaker': 'Home-Maker-Companion.jpg', 'svc-homemaker-2': 'Home-Maker-Companion-01.jpg',
   'svc-pca': 'Personal-Care-Assistant-01.jpg', 'svc-pca-2': 'Personal-Care-Assistant-03.jpg', 'svc-rn': 'RN-Services.jpg',
-  'svc-rn-2': 'RN-Services-1.jpg', 'senior-couple-laughing': 'senior-couple-laughing.jpg', 'caregiver-resident-laughing': 'caregiver-resident-laughing.jpg', 'caregiver-resident-outdoors': 'caregiver-resident-outdoors.jpg', 'svc-senior-care': 'Senior-Care.jpg', 'svc-personal-care-2': 'Personal-Care-2.jpg',
+  'svc-rn-2': 'RN-Services-1.jpg', 'senior-couple-laughing': 'senior-couple-laughing.jpg', 'caregiver-resident-laughing': 'caregiver-resident-laughing.jpg', 'caregiver-resident-outdoors': 'caregiver-resident-outdoors.jpg', 'caregiver-resident-shoulder': 'caregiver-resident-shoulder.jpg', 'svc-senior-care': 'Senior-Care.jpg', 'svc-personal-care-2': 'Personal-Care-2.jpg',
 }
 WIDTHS = [480, 800, 1200, 1600]
 os.makedirs(OUT, exist_ok=True)
