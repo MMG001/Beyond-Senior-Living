@@ -378,6 +378,37 @@ address { font-style: normal; }
 .svc-card__link:hover { color: #fff; }
 @media (max-width: 620px) { .svc-cards { grid-template-columns: 1fr; } }
 
+/* ---------- Services index: photo cards ---------- */
+.svc-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 32px); }
+.svc-tile { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 1px 2px rgba(22,38,63,.05); transition: box-shadow .2s, transform .2s, border-color .2s; }
+.svc-tile:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: #c9d7e2; }
+.svc-tile img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s ease; }
+.svc-tile:hover img { transform: scale(1.04); }
+.svc-tile__body { position: relative; z-index: 0; display: flex; flex-direction: column; flex: 1; padding: 26px 28px 24px; background: #fff; border-top: 4px solid var(--sky); }
+.svc-tile h3 { font-size: 1.4rem; line-height: 1.25; margin: 0 0 .55em; }
+.svc-tile h3 a { color: var(--ink); text-decoration: none; }
+.svc-tile h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }   /* whole card is clickable */
+.svc-tile:hover h3 a { color: var(--blue); }
+.svc-tile h3 a:focus-visible { outline: none; }
+.svc-tile:has(h3 a:focus-visible) { outline: 3px solid var(--sky); outline-offset: 3px; }
+.svc-tile p { color: var(--muted); flex: 1; margin: 0 0 1.4rem; }
+.svc-tile__more { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-weight: 700; color: var(--blue); padding-top: 16px; border-top: 1px solid var(--line); width: 100%; }
+.svc-tile__more::after { content: "→"; transition: transform .2s; }
+.svc-tile:hover .svc-tile__more::after { transform: translateX(4px); }
+@media (max-width: 960px) {
+  .svc-tiles { grid-template-columns: 1fr; }
+  .svc-tile { flex-direction: row; }
+  .svc-tile img { width: 40%; aspect-ratio: auto; height: 100%; min-height: 240px; }
+  .svc-tile__body { border-top: 0; border-left: 4px solid var(--sky); }
+}
+@media (max-width: 600px) {
+  .svc-tile { flex-direction: column; }
+  .svc-tile img { width: 100%; height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .svc-tile__body { border-left: 0; border-top: 4px solid var(--sky); padding: 22px 22px 20px; }
+  .svc-tile h3 { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) { .svc-tile, .svc-tile:hover, .svc-tile:hover img { transform: none; } }
+
 /* ---------- Full-width photo hero (home) ---------- */
 .hero--full { position: relative; isolation: isolate; display: flex; align-items: center; min-height: clamp(520px, 72vh, 760px); padding-block: clamp(72px, 10vw, 128px); background: var(--ink); color: #fff; overflow: hidden; }
 .hero--full .hero__bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 60% 35%; }
