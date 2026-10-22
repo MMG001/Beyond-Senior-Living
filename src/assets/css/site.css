@@ -358,6 +358,7 @@ address { font-style: normal; }
 .svc-card { position: relative; display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(22,38,63,.06); transition: box-shadow .2s, transform .2s; }
 .svc-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
 .svc-card img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.svc-card img.pos-62 { object-position: 62% 50%; }
 .svc-card__body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
 .svc-card h3 { font-size: 1.45rem; margin-bottom: .45em; }
 .svc-card h3 a { color: var(--ink); text-decoration: none; }
