@@ -98,6 +98,13 @@ address { font-style: normal; }
 .sub a[aria-current="page"] { color: var(--blue); background: var(--mist); }
 @media (min-width: 1081px) {
   .has-sub:hover > .sub, .has-sub:focus-within > .sub, .sub-toggle[aria-expanded="true"] + .sub { opacity: 1; visibility: visible; transform: none; }
+  .menu > li > a, .site-nav__cta { white-space: nowrap; }
+}
+/* Keep the 7-item desktop nav on one line on narrower laptops */
+@media (min-width: 1081px) and (max-width: 1260px) {
+  .site-nav { gap: 10px; }
+  .menu > li > a { padding-inline: 8px; font-size: .95rem; }
+  .site-nav__cta { padding-inline: 18px; }
 }
 .nav-toggle { display: none; }
 
