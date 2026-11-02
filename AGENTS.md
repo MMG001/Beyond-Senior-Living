@@ -12,6 +12,11 @@ Static site for Beyond Senior Living (assisted living, Woodbury, MN). See README
 - Do not hard-code the phone number in page copy; use `{{phone}}` / `{{phoneHref}}`. Front-matter titles and descriptions are the only exception (they are checked for length at build time); update them if the phone changes.
 - The client's wording is the source of truth for page copy. Link existing phrases rather than rewriting them.
 
+## Indexing
+- `*.pages.dev` hosts send `X-Robots-Tag: noindex` (`src/static/_headers`). Only the custom domain should be indexed; canonicals always point to it.
+- Sitemap `lastmod` comes from `src/lastmod.json`: a hash of each page's main content and JSON-LD, and the date that content last changed. A local `node build.mjs` updates it; commit it with the content change.
+- Old WordPress URLs 301 in one hop (`src/static/_redirects`). Remove a URL from internal links and the sitemap if it ever redirects.
+
 ## Build checks (warnings printed by build.mjs)
 - One `<h1>` per page, titles ≤ 60 characters, descriptions 110–160 characters, every image has alt text, the word "residential" never appears.
 

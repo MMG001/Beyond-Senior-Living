@@ -106,6 +106,12 @@ const business = {
 const website = { '@type': 'WebSite', '@id': `${site.url}/#website`, url: site.url + '/', name: site.name, publisher: { '@id': `${site.url}/#business` } };
 const pageType = { '/about/': 'AboutPage', '/contact/': 'ContactPage', '/gallery/': 'CollectionPage', '/gallery/our-facility/': 'CollectionPage', '/gallery/our-rooms/': 'CollectionPage' };
 
+// ---------- lastmod tracking (src/lastmod.json is committed) ----------
+const LASTMOD = path.join(SRC, 'lastmod.json');
+const lastmod = fs.existsSync(LASTMOD) ? JSON.parse(read(LASTMOD)) : {};
+let lastmodChanged = false;
+const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Chicago' });
+
 // ---------- pages ----------
 const layout = read(path.join(SRC, 'partials', 'layout.html'));
 const pages = [];
@@ -166,22 +172,33 @@ for (const p of pages) {
   if (p.title.length > 60) warnings.push(`${p.path} title is ${p.title.length} chars`);
   if (p.description.length > 160 || p.description.length < 110) warnings.push(`${p.path} description is ${p.description.length} chars`);
 
+  // lastmod: hash of the page's main content; the date only changes when that content changes
+  if (!p.noindex) {
+    const mainHtml = (html.match(/<main[\s\S]*?<\/main>/) || [html])[0];
+    const h = crypto.createHash('sha1').update(mainHtml + jsonld).digest('hex').slice(0, 12);
+    const prev = lastmod[p.path];
+    if (!prev || prev.hash !== h) { lastmod[p.path] = { hash: h, date: today }; lastmodChanged = true; }
+    p.lastmod = lastmod[p.path].date;
+  }
   const out = p.path === '/404/' ? path.join(DIST, '404.html') : path.join(DIST, p.path, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
 }
 
 // ---------- sitemap + robots ----------
-const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages
   .filter((p) => !p.noindex)
   .sort((a, b) => (b.priority ?? 0.6) - (a.priority ?? 0.6))
-  .map((p) => `  <url><loc>${absolute(p.path)}</loc><lastmod>${today}</lastmod><priority>${(p.priority ?? 0.6).toFixed(1)}</priority></url>`)
+  .map((p) => `  <url><loc>${absolute(p.path)}</loc><lastmod>${p.lastmod}</lastmod><priority>${(p.priority ?? 0.6).toFixed(1)}</priority></url>`)
   .join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap);
 // llms.txt: fill {{tokens}} from site.config.json so business facts stay in one place
 { const f = path.join(DIST, 'llms.txt'); if (fs.existsSync(f)) fs.writeFileSync(f, read(f).replace(/\{\{(\w+)\}\}/g, (m, k) => site[k] ?? m)); }
 fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 
+if (lastmodChanged) {
+  if (process.env.CF_PAGES) warnings.push('src/lastmod.json is out of date: run `node build.mjs` locally and commit it so sitemap dates stay accurate');
+  else fs.writeFileSync(LASTMOD, JSON.stringify(Object.fromEntries(Object.entries(lastmod).sort()), null, 2) + '\n');
+}
 console.log(`Built ${pages.length} pages → dist/`);
 if (warnings.length) console.log('\nWarnings:\n- ' + [...new Set(warnings)].join('\n- '));
