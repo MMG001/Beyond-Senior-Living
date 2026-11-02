@@ -49,3 +49,5 @@
 /appointment/  /schedule-a-tour/  301
 /services/rn-services  /services/medical-services/  301
 /services/rn-services/  /services/medical-services/  301
+/resources  /contact/  301
+/resources/  /contact/  301
