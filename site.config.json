@@ -9,9 +9,15 @@
   "street": "6281 Oakwood Road",
   "city": "Woodbury",
   "region": "MN",
-  "zip": "55128",
+  "zip": "55125",
   "serviceArea": "Proudly serving the Twin Cities",
-  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=6281+Oakwood+Road+Woodbury+MN+55128",
+  "mapsUrl": "https://maps.app.goo.gl/yL9GFyP2m9Gxboqn6",
+  "geo": {
+    "latitude": 44.9327312,
+    "longitude": -92.9783898
+  },
+  "license": "404170",
+  "licenseVerifyUrl": "https://www.health.state.mn.us/facilities/regulation/verifyalicense.html",
   "areaServed": [
     "Woodbury",
     "Saint Paul",

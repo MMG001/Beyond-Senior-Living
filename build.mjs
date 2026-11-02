@@ -95,6 +95,8 @@ const business = {
   areaServed: [{ '@type': 'State', name: 'Minnesota' }, ...site.areaServed.map((n) => ({ '@type': 'City', name: n }))],
   paymentAccepted: 'Private pay, long-term care insurance, Minnesota Medicaid waivers (Brain Injury, CADI, Elderly Waiver)',
   hasMap: site.mapsUrl,
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.latitude, longitude: site.geo.longitude },
+  identifier: { '@type': 'PropertyValue', propertyID: 'Minnesota Department of Health assisted living license', value: site.license },
   potentialAction: [
     { '@type': 'ReserveAction', name: 'Schedule a tour', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/schedule-a-tour/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },
     { '@type': 'CommunicateAction', name: 'Send us a message', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/contact/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },

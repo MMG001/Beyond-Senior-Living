@@ -8,7 +8,7 @@ Static site for Beyond Senior Living (assisted living, Woodbury, MN). See README
 - Canonical host is `https://beyondseniorlivingmn.com` (set in `site.config.json` → `url`).
 
 ## Single source of truth
-- Name, phone, fax, email, address, service area and Cognito form IDs live in `site.config.json`. Pages, partials, JSON-LD and `llms.txt` read them through `{{tokens}}`.
+- Name, phone, fax, email, address, map pin, MDH license number, service area and Cognito form IDs live in `site.config.json`. Pages, partials, JSON-LD and `llms.txt` read them through `{{tokens}}`.
 - Do not hard-code the phone number in page copy; use `{{phone}}` / `{{phoneHref}}`. Front-matter titles and descriptions are the only exception (they are checked for length at build time); update them if the phone changes.
 - The client's wording is the source of truth for page copy. Link existing phrases rather than rewriting them.
 
@@ -25,7 +25,7 @@ Generated in `build.mjs`. Every page has one `@graph` with:
 ### Intentionally not marked up, and why
 - **Review / AggregateRating:** there are no first-party reviews on the site. Third-party (Google) reviews must never be marked up.
 - **openingHoursSpecification:** the home is staffed 24/7 but tour/office hours have not been confirmed by the client.
-- **geo / GeoCircle:** exact coordinates for the address have not been confirmed, so no `geo` or radius is published. The service area is a State plus named cities.
+- **GeoCircle:** `geo` uses the client-confirmed Google Maps pin (`site.config.json` → `geo`), but no service radius has been given, so the service area is a State plus named cities rather than a GeoCircle.
 - **sameAs:** no confirmed Google Business Profile or social profile URLs yet.
 - **Person (owner, RN):** names and credentials have not been provided.
 - **Offer / price:** pricing is discussed by phone; none is published.
