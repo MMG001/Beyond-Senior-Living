@@ -1,0 +1,28 @@
+# Beyond Senior Living
+
+> Assisted living home at {{street}}, {{city}}, Minnesota {{zip}}, serving families across the Twin Cities. Awake staff on site 24/7, a registered nurse who makes site visits and is on call 24/7, and on-site physician and nurse practitioner services from the Bluestone team.
+
+- Phone: {{phone}}
+- Fax: {{fax}}
+- Email: {{email}}
+- Payment accepted: private pay, long-term care insurance, Minnesota Medicaid waivers (Brain Injury (BI), CADI, Elderly Waiver (EW))
+- Areas served: Woodbury, Saint Paul, Minneapolis, Cottage Grove, Oakdale, Maplewood, Lake Elmo, Afton, Newport, Stillwater
+
+## Services
+
+- [All assisted living services](https://beyondseniorlivingmn.com/services/): overview of care included for every resident
+- [Person-centered care](https://beyondseniorlivingmn.com/services/person-centered-care/): individualized care plans, help with ADLs and IADLs, medication management, respite care; residents living with Parkinson's, COPD, CHF, stroke, diabetes, mental illness, hospice or palliative care
+- [Health care](https://beyondseniorlivingmn.com/services/health-care/): trained, background-checked staff, monitored security and fire systems, everyday wellness support
+- [Medical services](https://beyondseniorlivingmn.com/services/medical-services/): RN and specialized care (wound care, insulin, catheter, oxygen, CPAP, INR, ostomy, hospice coordination) and on-site physician and nurse practitioner visits
+
+## Visiting and contact
+
+- [Schedule a tour or appointment](https://beyondseniorlivingmn.com/schedule-a-tour/)
+- [Contact us](https://beyondseniorlivingmn.com/contact/)
+- [Accepted forms of payment](https://beyondseniorlivingmn.com/insurance/)
+
+## More
+
+- [About](https://beyondseniorlivingmn.com/about/)
+- [Photo gallery](https://beyondseniorlivingmn.com/gallery/): [our facility](https://beyondseniorlivingmn.com/gallery/our-facility/), [our rooms](https://beyondseniorlivingmn.com/gallery/our-rooms/)
+- [Employment](https://beyondseniorlivingmn.com/employment/)

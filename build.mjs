@@ -56,7 +56,7 @@ function cognito(a) {
   const key = site.cognito.accountKey, f = site.cognito.forms[a.form];
   if (key && f && f.id) {
     // Cognito iframe embed, exactly as provided by Cognito Forms (iframe.js auto-resizes the frame)
-    return `<div class="cognito-wrap"><iframe src="https://www.cognitoforms.com/f/${esc(key)}/${esc(f.id)}" allow="payment" style="border:0;width:100%;" height="${esc(f.height || '600')}" title="${esc(f.title || 'Form')}"></iframe>\n<script src="https://www.cognitoforms.com/f/iframe.js"></script></div><p class="note form-help">Trouble with the form? Call <a href="${site.phoneHref}">${site.phone}</a> or email <a href="mailto:${site.email}">${site.email}</a>.</p>`;
+    return `<div class="cognito-wrap"><iframe src="https://www.cognitoforms.com/f/${esc(key)}/${esc(f.id)}" allow="payment" style="border:0;width:100%;" height="${esc(f.height || '600')}" title="${esc(f.title || 'Form')}"></iframe>\n<script src="https://www.cognitoforms.com/f/iframe.js"></script></div><p class="note form-help">Trouble with the form? Call <a href="${site.phoneHref}">${site.phone}</a> or email <a href="mailto:${site.email}">${site.email}</a>. We use what you send only to respond to you; see our <a href="/privacy-policy/">privacy policy</a>.</p>`;
   }
   warnings.push(`Cognito form "${a.form}" not configured — fallback shown`);
   return `<div class="form-fallback" role="note"><p class="form-fallback__title">${esc(a.title || 'Our online form is on its way')}</p><p>${esc(a.text || 'In the meantime, call or email us and we’ll get right back to you.')}</p><p class="form-fallback__actions"><a class="btn" href="${site.phoneHref}">Call ${site.phone}</a> <a class="btn btn-ghost" href="mailto:${site.email}">Email us</a></p></div>`;
@@ -92,10 +92,17 @@ const business = {
   logo: `${site.url}/icon-512.png`,
   image: `${site.url}/assets/img/og-default.jpg`,
   address: { '@type': 'PostalAddress', streetAddress: site.street, addressLocality: site.city, addressRegion: site.region, postalCode: site.zip, addressCountry: 'US' },
-  areaServed: site.areaServed.map((n) => ({ '@type': 'City', name: n })),
+  areaServed: [{ '@type': 'State', name: 'Minnesota' }, ...site.areaServed.map((n) => ({ '@type': 'City', name: n }))],
   paymentAccepted: 'Private pay, long-term care insurance, Minnesota Medicaid waivers (Brain Injury, CADI, Elderly Waiver)',
   hasMap: site.mapsUrl,
+  potentialAction: [
+    { '@type': 'ReserveAction', name: 'Schedule a tour', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/schedule-a-tour/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },
+    { '@type': 'CommunicateAction', name: 'Send us a message', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/contact/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },
+    { '@type': 'CommunicateAction', name: 'Call us', target: { '@type': 'EntryPoint', urlTemplate: site.phoneHref, actionPlatform: ['https://schema.org/MobileWebPlatform'] } },
+  ],
 };
+const website = { '@type': 'WebSite', '@id': `${site.url}/#website`, url: site.url + '/', name: site.name, publisher: { '@id': `${site.url}/#business` } };
+const pageType = { '/about/': 'AboutPage', '/contact/': 'ContactPage', '/gallery/': 'CollectionPage', '/gallery/our-facility/': 'CollectionPage', '/gallery/our-rooms/': 'CollectionPage' };
 
 // ---------- pages ----------
 const layout = read(path.join(SRC, 'partials', 'layout.html'));
@@ -114,13 +121,13 @@ for (const p of pages) {
   const title = p.path === '/' ? p.title : `${p.title}`;
   const ogImg = absolute(p.ogImage || '/assets/img/og-default.jpg');
   const graph = [ { ...business } ];
-  if (p.path === '/') graph.push({ '@type': 'WebSite', '@id': `${site.url}/#website`, url: site.url + '/', name: site.name, publisher: { '@id': `${site.url}/#business` } });
-  graph.push({ '@type': 'WebPage', '@id': url + '#webpage', url, name: title, description: p.description, isPartOf: { '@id': `${site.url}/#website` }, about: { '@id': `${site.url}/#business` } });
+  graph.push(website);
+  graph.push({ '@type': pageType[p.path] || 'WebPage', '@id': url + '#webpage', url, name: title, description: p.description, isPartOf: { '@id': `${site.url}/#website` }, about: { '@id': `${site.url}/#business` }, ...(p.service ? { mainEntity: { '@id': url + '#service' } } : {}) });
   if (p.breadcrumbs) {
     const items = [['Home', '/'], ...p.breadcrumbs];
     graph.push({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, item: absolute(href) })) });
   }
-  if (p.service) graph.push({ '@type': 'Service', name: p.service, serviceType: p.service, provider: { '@id': `${site.url}/#business` }, areaServed: { '@type': 'State', name: 'Minnesota' }, url });
+  if (p.service) graph.push({ '@type': 'Service', '@id': url + '#service', name: p.service, description: p.description, serviceType: p.service, provider: { '@id': `${site.url}/#business` }, areaServed: { '@type': 'State', name: 'Minnesota' }, url });
   if (p.faq) graph.push({ '@type': 'FAQPage', mainEntity: p.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
   const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
@@ -154,7 +161,7 @@ for (const p of pages) {
   const h1s = (html.match(/<h1[\s>]/g) || []).length;
   if (h1s !== 1) warnings.push(`${p.path} has ${h1s} <h1>`);
   if (/residential/i.test(html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, ''))) warnings.push(`${p.path} contains the word "residential"`);
-  if (p.title.length > 65) warnings.push(`${p.path} title is ${p.title.length} chars`);
+  if (p.title.length > 60) warnings.push(`${p.path} title is ${p.title.length} chars`);
   if (p.description.length > 160 || p.description.length < 110) warnings.push(`${p.path} description is ${p.description.length} chars`);
 
   const out = p.path === '/404/' ? path.join(DIST, '404.html') : path.join(DIST, p.path, 'index.html');
@@ -170,6 +177,8 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
   .map((p) => `  <url><loc>${absolute(p.path)}</loc><lastmod>${today}</lastmod><priority>${(p.priority ?? 0.6).toFixed(1)}</priority></url>`)
   .join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap);
+// llms.txt: fill {{tokens}} from site.config.json so business facts stay in one place
+{ const f = path.join(DIST, 'llms.txt'); if (fs.existsSync(f)) fs.writeFileSync(f, read(f).replace(/\{\{(\w+)\}\}/g, (m, k) => site[k] ?? m)); }
 fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 
 console.log(`Built ${pages.length} pages → dist/`);

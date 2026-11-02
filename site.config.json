@@ -22,8 +22,7 @@
     "Lake Elmo",
     "Afton",
     "Newport",
-    "Stillwater",
-    "Twin Cities metro"
+    "Stillwater"
   ],
   "cognito": {
     "_readme": "Cognito iframe embed. Form URL = https://www.cognitoforms.com/f/{accountKey}/{id}. Height is the starting height from Cognito's embed code; iframe.js resizes it automatically.",
