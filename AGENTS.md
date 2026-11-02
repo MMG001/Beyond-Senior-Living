@@ -13,7 +13,7 @@ Static site for Beyond Senior Living (assisted living, Woodbury, MN). See README
 - The client's wording is the source of truth for page copy. Link existing phrases rather than rewriting them.
 
 ## Indexing
-- `*.pages.dev` hosts send `X-Robots-Tag: noindex` (`src/static/_headers`). Only the custom domain should be indexed; canonicals always point to it.
+- No `X-Robots-Tag` noindex anywhere (removed Nov 2 for launch). Canonicals always point to the custom domain.
 - Sitemap `lastmod` comes from `src/lastmod.json`: a hash of each page's main content and JSON-LD, and the date that content last changed. A local `node build.mjs` updates it; commit it with the content change.
 - Old WordPress URLs 301 in one hop (`src/static/_redirects`). Remove a URL from internal links and the sitemap if it ever redirects.
 
