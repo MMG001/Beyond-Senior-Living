@@ -74,4 +74,4 @@ The account key is `cognito.accountKey`. To swap a form, change its `id` (and `h
 ## Content rules
 
 - Always say **"assisted living"**, never "residential home". The build warns if the word "residential" appears.
-- Phone 651-200-0857 · Fax 651-500-6891 · beyondseniorliving@gmail.com · 6281 Oakwood Road, Woodbury, MN 55128
+- Phone 651-493-9477 · Fax 651-500-6891 · beyondseniorliving@gmail.com · 6281 Oakwood Road, Woodbury, MN 55128
