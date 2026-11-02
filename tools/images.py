@@ -22,7 +22,8 @@ MAP = {
   'svc-pca': 'Personal-Care-Assistant-01.jpg', 'svc-pca-2': 'Personal-Care-Assistant-03.jpg', 'svc-rn': 'RN-Services.jpg',
   'svc-rn-2': 'RN-Services-1.jpg', 'senior-couple-laughing': 'senior-couple-laughing.jpg', 'caregiver-resident-laughing': 'caregiver-resident-laughing.jpg', 'caregiver-resident-outdoors': 'caregiver-resident-outdoors.jpg', 'caregiver-resident-shoulder': 'caregiver-resident-shoulder.jpg', 'caregiver-resident-talking': 'caregiver-resident-talking.jpg', 'nurse-resident-outdoors': 'nurse-resident-outdoors.jpg', 'nurse-resident-wheelchair': 'nurse-resident-wheelchair.jpg', 'svc-senior-care': 'Senior-Care.jpg', 'svc-personal-care-2': 'Personal-Care-2.jpg',
 }
-WIDTHS = [480, 800, 1200, 1600]
+WIDTHS = [480, 640, 800, 1200, 1600]
+QUALITY = {"hero-family-tablet": 62}  # hero sits under a dark overlay
 os.makedirs(OUT, exist_ok=True)
 manifest = {}
 for name, f in MAP.items():
@@ -32,7 +33,7 @@ for name, f in MAP.items():
     ws = sorted(set(ws))
     for x in ws:
         r = im.resize((x, round(h * x / w)), Image.LANCZOS) if x != w else im
-        r.save(os.path.join(OUT, f'{name}-{x}.webp'), 'WEBP', quality=74, method=6)
+        r.save(os.path.join(OUT, f'{name}-{x}.webp'), 'WEBP', quality=QUALITY.get(name, 74), method=6)
     manifest[name] = {'w': w, 'h': h, 'widths': ws}
 # logo icon + favicons
 icon = Image.open(os.path.join(SRC, 'Beyound-Senior-LIving-Icon.png')).convert('RGBA')
