@@ -137,6 +137,13 @@ for (const p of pages) {
     graph.push({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, item: absolute(href) })) });
   }
   if (p.service) graph.push({ '@type': 'Service', '@id': url + '#service', name: p.service, description: p.description, serviceType: p.service, provider: { '@id': `${site.url}/#business` }, areaServed: { '@type': 'State', name: 'Minnesota' }, url });
+  if (p.city) {
+    graph.push({ '@type': 'City', '@id': url + '#city', name: 'Woodbury', description: 'City in Washington County, Minnesota, United States', url,
+      geo: { '@type': 'GeoCoordinates', latitude: 44.9239, longitude: -92.9594 },
+      containedInPlace: { '@type': 'State', name: 'Minnesota', geo: { '@type': 'GeoCoordinates', latitude: 45.7326, longitude: -93.9196 } },
+      sameAs: ['https://www.wikidata.org/wiki/Q862672', 'https://en.wikipedia.org/wiki/Woodbury,_Minnesota', 'https://www.woodburymn.gov/'] });
+    graph.find((n) => n['@id'] === url + '#webpage').mainEntity = { '@id': url + '#city' };
+  }
   if (p.faq) graph.push({ '@type': 'FAQPage', mainEntity: p.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
   const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
