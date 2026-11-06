@@ -26,7 +26,9 @@ Generated in `build.mjs`. Every page has one `@graph` with:
 - the `WebSite` node (`#website`)
 - a `WebPage` (or `AboutPage`, `ContactPage`, `CollectionPage`)
 - `sameAs` on the business node = Google Business Profile (`site.config.json` → `gbpUrl`, CID form). `mapsUrl` is the client's GBP share link, used for the visible address, directions and "Find us on Google" links. No social profiles yet.
-- `BreadcrumbList` on inner pages, `Service` (`#service`) on service pages, `FAQPage` where FAQs are visible
+- `knowsAbout` on the business node: topics with Wikidata IDs (`topics` in build.mjs). Verify any new Q-id on wikidata.org before adding it.
+- All three `Service` nodes on every page, linked from the business via `hasOfferCatalog` and to their topics via `category`.
+- `BreadcrumbList` (`#breadcrumb`, linked from `WebPage.breadcrumb`) on inner pages and `FAQPage` (`#faq`, linked via `hasPart`/`isPartOf`) where FAQs are visible. Every node must connect to the graph.
 
 ### Intentionally not marked up, and why
 - **Review / AggregateRating:** there are no first-party reviews on the site. Third-party (Google) reviews must never be marked up.

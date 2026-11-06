@@ -79,6 +79,38 @@ function expand(html) {
 }
 
 // ---------- schema ----------
+// Topics the business knows about. Wikidata IDs verified against wikidata.org item labels (Nov 2026).
+const wd = (q) => `https://www.wikidata.org/wiki/${q}`;
+const topics = {
+  assistedLiving: { name: 'Assisted living', q: 'Q315412' },
+  personCentered: { name: 'Person-centered care', q: 'Q25112484' },
+  registeredNurse: { name: 'Registered nurse', q: 'Q13608061' },
+  nursing: { name: 'Nursing', q: 'Q121176' },
+  nursePractitioner: { name: 'Nurse practitioner', q: 'Q595071' },
+  physician: { name: 'Physician', q: 'Q39631' },
+  elderlyCare: { name: 'Elderly care', q: 'Q437458' },
+  gerontologicalNursing: { name: 'Gerontological nursing', q: 'Q5550842' },
+  geriatrics: { name: 'Geriatrics', q: 'Q10384' },
+  adl: { name: 'Activities of daily living assistance', q: 'Q22906178' },
+  longTermCare: { name: 'Long-term care', q: 'Q6672123' },
+  agingInPlace: { name: 'Aging in place', q: 'Q4692582' },
+  respiteCare: { name: 'Respite care', q: 'Q7315937' },
+  palliativeCare: { name: 'Palliative care', q: 'Q29483' },
+  hospice: { name: 'Hospice', q: 'Q608152' },
+  endOfLifeCare: { name: 'End-of-life care', q: 'Q2045105' },
+};
+const topic = (k) => ({ '@type': 'Thing', '@id': wd(topics[k].q), name: topics[k].name, sameAs: wd(topics[k].q) });
+// The three services, listed on every page and linked to the business.
+const services = [
+  { path: '/services/person-centered-care/', name: 'Person-centered care', serviceType: 'Person-centered assisted living care', topics: ['personCentered', 'assistedLiving', 'adl', 'elderlyCare'],
+    description: 'Care organized around each resident’s values, needs and preferences, with the resident as an equal partner in every decision.' },
+  { path: '/services/health-care/', name: 'Health care', serviceType: 'Assisted living health care', topics: ['assistedLiving', 'elderlyCare', 'longTermCare'],
+    description: 'Trained, background-checked staff on site 24/7, plus a secure home with a monitored security system.' },
+  { path: '/services/medical-services/', name: 'Services provided by RN, MD and Nurse Practitioner', serviceType: 'Nursing service by RN, physicians and nurse practitioners', topics: ['registeredNurse', 'nursing', 'physician', 'nursePractitioner', 'gerontologicalNursing', 'agingInPlace'],
+    description: 'On-site physician and nurse practitioner visits, RN site visits with an RN on call 24/7, and specialized care so residents can age in place.' },
+];
+const serviceId = (path) => `${site.url}${path}#service`;
+
 const absolute = (p) => (p.startsWith('http') ? p : site.url + p);
 const business = {
   '@type': ['LocalBusiness', 'MedicalBusiness'],
@@ -98,6 +130,9 @@ const business = {
   sameAs: [site.gbpUrl],
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.latitude, longitude: site.geo.longitude },
   identifier: { '@type': 'PropertyValue', propertyID: 'Minnesota Department of Health assisted living license', value: site.license },
+  knowsAbout: Object.keys(topics).map(topic),
+  hasOfferCatalog: { '@type': 'OfferCatalog', '@id': `${site.url}/services/#catalog`, name: 'Assisted living services', url: `${site.url}/services/`,
+    itemListElement: services.map((sv) => ({ '@type': 'Offer', itemOffered: { '@id': serviceId(sv.path) } })) },
   potentialAction: [
     { '@type': 'ReserveAction', name: 'Schedule a tour', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/schedule-a-tour/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },
     { '@type': 'CommunicateAction', name: 'Send us a message', target: { '@type': 'EntryPoint', urlTemplate: `${site.url}/contact/`, actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'] } },
@@ -131,12 +166,18 @@ for (const p of pages) {
   const ogImg = absolute(p.ogImage || '/assets/img/og-default.jpg');
   const graph = [ { ...business } ];
   graph.push(website);
-  graph.push({ '@type': pageType[p.path] || 'WebPage', '@id': url + '#webpage', url, name: title, description: p.description, isPartOf: { '@id': `${site.url}/#website` }, about: { '@id': `${site.url}/#business` }, ...(p.service ? { mainEntity: { '@id': url + '#service' } } : {}) });
+  graph.push({ '@type': pageType[p.path] || 'WebPage', '@id': url + '#webpage', url, name: title, description: p.description, inLanguage: 'en-US', isPartOf: { '@id': `${site.url}/#website` }, about: { '@id': `${site.url}/#business` }, publisher: { '@id': `${site.url}/#business` }, ...(p.breadcrumbs ? { breadcrumb: { '@id': url + '#breadcrumb' } } : {}), ...(p.faq ? { hasPart: { '@id': url + '#faq' } } : {}), ...(p.service ? { mainEntity: { '@id': url + '#service' } } : {}) });
   if (p.breadcrumbs) {
     const items = [['Home', '/'], ...p.breadcrumbs];
-    graph.push({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, item: absolute(href) })) });
+    graph.push({ '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', isPartOf: { '@id': url + '#webpage' }, itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, item: absolute(href) })) });
   }
-  if (p.service) graph.push({ '@type': 'Service', '@id': url + '#service', name: p.service, description: p.description, serviceType: p.service, provider: { '@id': `${site.url}/#business` }, areaServed: { '@type': 'State', name: 'Minnesota' }, url });
+  for (const sv of services) {
+    const node = { '@type': 'Service', '@id': serviceId(sv.path), name: sv.name, description: sv.description, serviceType: sv.serviceType, url: absolute(sv.path),
+      provider: { '@id': `${site.url}/#business` }, areaServed: { '@type': 'State', name: 'Minnesota' },
+      category: sv.topics.map((k) => ({ '@id': wd(topics[k].q) })) };
+    if (absolute(sv.path) === url) node.mainEntityOfPage = { '@id': url + '#webpage' };
+    graph.push(node);
+  }
   if (p.city) {
     graph.push({ '@type': 'City', '@id': url + '#city', name: 'Woodbury', description: 'City in Washington County, Minnesota, United States', url,
       geo: { '@type': 'GeoCoordinates', latitude: 44.9239, longitude: -92.9594 },
@@ -144,7 +185,7 @@ for (const p of pages) {
       sameAs: ['https://www.wikidata.org/wiki/Q862672', 'https://en.wikipedia.org/wiki/Woodbury,_Minnesota', 'https://www.woodburymn.gov/'] });
     graph.find((n) => n['@id'] === url + '#webpage').mainEntity = { '@id': url + '#city' };
   }
-  if (p.faq) graph.push({ '@type': 'FAQPage', mainEntity: p.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
+  if (p.faq) graph.push({ '@type': 'FAQPage', '@id': url + '#faq', isPartOf: { '@id': url + '#webpage' }, about: { '@id': `${site.url}/#business` }, mainEntity: p.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
   const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
   let crumbs = '';
