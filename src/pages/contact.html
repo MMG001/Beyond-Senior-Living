@@ -33,9 +33,11 @@
         <li><strong>Phone</strong><a href="{{phoneHref}}">{{phone}}</a></li>
         <li><strong>Fax</strong><span>{{fax}}</span></li>
         <li><strong>Email</strong><a href="mailto:{{email}}">{{email}}</a></li>
-        <li><strong>Address</strong><address>{{street}}<br>{{city}}, {{region}} {{zip}}</address></li>
+        <li><strong>Address</strong><address><a href="{{mapsUrl}}" target="_blank" rel="noopener">{{street}}<br>{{city}}, {{region}} {{zip}}<span class="sr-only"> (opens our Google Business Profile)</span></a></address></li>
+        <li><strong>Plus Code</strong><a href="{{mapsUrl}}" target="_blank" rel="noopener">{{plusCode}}<span class="sr-only"> (opens Google Maps)</span></a></li>
+        <li><strong>Google Business Profile</strong><a href="{{mapsUrl}}" target="_blank" rel="noopener">Beyond Senior Living on Google<span class="sr-only"> (opens in a new tab)</span></a></li>
       </ul>
-      <div class="map-facade" data-map-src="https://www.google.com/maps?q=6281+Oakwood+Road,+Woodbury,+MN+55125&amp;output=embed" data-map-title="Map to Beyond Senior Living, 6281 Oakwood Road, Woodbury, MN">
+      <div class="map-facade" data-map-src="https://www.google.com/maps?q=Beyond+Senior+Living,+6281+Oakwood+Road,+Woodbury,+MN+55125&amp;output=embed" data-map-title="Map to Beyond Senior Living, 6281 Oakwood Road, Woodbury, MN">
         <div>
           <p>6281 Oakwood Road, Woodbury</p>
           <button class="btn btn-ghost" type="button">Show map</button>

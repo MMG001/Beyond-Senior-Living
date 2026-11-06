@@ -25,13 +25,13 @@ Generated in `build.mjs`. Every page has one `@graph` with:
 - the business node (`#business`, `LocalBusiness` + `MedicalBusiness`) with `potentialAction` for tour booking, contact and phone
 - the `WebSite` node (`#website`)
 - a `WebPage` (or `AboutPage`, `ContactPage`, `CollectionPage`)
+- `sameAs` on the business node = Google Business Profile (`site.config.json` → `gbpUrl`, CID form). `mapsUrl` is the client's GBP share link, used for the visible address, directions and "Find us on Google" links. No social profiles yet.
 - `BreadcrumbList` on inner pages, `Service` (`#service`) on service pages, `FAQPage` where FAQs are visible
 
 ### Intentionally not marked up, and why
 - **Review / AggregateRating:** there are no first-party reviews on the site. Third-party (Google) reviews must never be marked up.
 - **openingHoursSpecification:** the home is staffed 24/7 but tour/office hours have not been confirmed by the client.
 - **GeoCircle:** `geo` uses the client-confirmed Google Maps pin (`site.config.json` → `geo`), but no service radius has been given, so the service area is a State plus named cities rather than a GeoCircle.
-- **sameAs:** no confirmed Google Business Profile or social profile URLs yet.
 - **Person (owner, RN):** names and credentials have not been provided.
 - **Offer / price:** pricing is discussed by phone; none is published.
 - **Dementia / memory care:** intentionally not offered on the site (client decision).

@@ -95,6 +95,7 @@ const business = {
   areaServed: [{ '@type': 'State', name: 'Minnesota' }, ...site.areaServed.map((n) => ({ '@type': 'City', name: n }))],
   paymentAccepted: 'Private pay, long-term care insurance, Minnesota Medicaid waivers (Brain Injury, CADI, Elderly Waiver)',
   hasMap: site.mapsUrl,
+  sameAs: [site.gbpUrl],
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.latitude, longitude: site.geo.longitude },
   identifier: { '@type': 'PropertyValue', propertyID: 'Minnesota Department of Health assisted living license', value: site.license },
   potentialAction: [
